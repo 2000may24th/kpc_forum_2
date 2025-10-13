@@ -1,0 +1,31 @@
+/* Force all hero elements to be visible immediately - Safe Version */
+.hero-logo,
+.hero-logo-img,
+.hero-title,
+.title-container,
+.main-title-text,
+.title-main,
+.title-line-en,
+.subtitle,
+.tagline,
+.hero-info,
+.info-line,
+.info-item,
+.hero-cta {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Color overrides to ensure visibility */
+.title-main {
+    color: white !important;
+    font-family: 'Black Han Sans', 'Noto Sans KR', sans-serif !important;
+}
+
+.title-line-en {
+    color: #d4af37 !important;
+}
+
+.tagline {
+    color: #cbd5e0 !important;
+}
