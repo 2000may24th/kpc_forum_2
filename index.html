@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/force-visible.css">
     <style>
-        /* 추가된 스타일 */
+        /* 기존 스타일 */
         #submission-success-message {
             display: none;
             padding: 20px;
@@ -26,6 +26,56 @@
             border-radius: 8px;
             text-align: center;
             font-size: 1.1em;
+        }
+
+        /* 모바일 UI 개선을 위한 추가 스타일 */
+        @media (max-width: 768px) {
+            /* Statistics Section: '참가자, 연사, 세션, 시간' 블록을 한 줄로 표시 */
+            .stats-grid {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-wrap: nowrap; /* 한 줄에 표시되도록 설정 */
+            }
+
+            .stat-item {
+                flex: 1; /* 각 아이템이 동일한 공간을 차지하도록 설정 */
+                padding: 0 5px; /* 아이템 간의 최소 간격 확보 */
+            }
+
+            .stat-number {
+                font-size: 2rem; /* 모바일 화면에 맞게 폰트 크기 조정 */
+            }
+
+            .stat-label {
+                font-size: 0.75rem; /* 모바일 화면에 맞게 폰트 크기 조정 */
+            }
+
+            /* Speakers Section: 기조 연설 및 세션 발표자 블록을 2열 그리드로 변경 */
+            .speakers-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2열 그리드 레이아웃 */
+                gap: 1rem; /* 카드 사이의 간격 조정 */
+            }
+
+            .speaker-card h3 {
+                font-size: 1rem; /* 이름 폰트 크기 조정 */
+            }
+
+            .speaker-card p {
+                font-size: 0.8rem; /* 직책/설명 폰트 크기 조정 */
+            }
+            
+            /* 히어로 섹션 정보 라인 개선 */
+            .hero-info .info-line {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0 1rem;
+            }
+
+            .hero-info .info-separator {
+                display: none; /* 모바일에서는 구분선 숨기기 */
+            }
         }
     </style>
 </head>
@@ -645,6 +695,3 @@
     </script>
 </body>
 </html>
-
-
-
