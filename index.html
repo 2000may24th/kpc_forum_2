@@ -288,6 +288,59 @@
             color: #6c757d;
             margin-top: 10px;
         }
+
+        /* --- 참가 신청 폼 스타일 확장 --- */
+        .registration-form {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e9ecef;
+        }
+        
+        @media (max-width: 768px) {
+            .registration-form {
+                padding: 1.5rem;
+            }
+        }
+
+        .registration-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .registration-form .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #495057;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .registration-form input[type="text"],
+        .registration-form input[type="email"],
+        .registration-form input[type="tel"] {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+
+        .registration-form input:focus {
+            outline: none;
+            border-color: #f3b63a;
+            box-shadow: 0 0 0 3px rgba(243, 182, 58, 0.25);
+        }
+
+        .registration-form .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 6px;
+        }
         
         /* 모바일 UI 개선을 위한 추가 스타일 */
         @media (max-width: 768px) {
