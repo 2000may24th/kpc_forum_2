@@ -232,39 +232,6 @@
         .prev-btn { left: -22px; }
         .next-btn { right: -22px; }
 
-        /* --- 참가 신청 섹션 수정 --- */
-        .registration .section-header {
-            margin-bottom: 2.5rem;
-        }
-
-        .registration-header-info {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            border: 1px solid #e9ecef;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: left;
-        }
-
-        .registration-header-info p {
-            margin: 0.5rem 0;
-            color: #495057;
-            font-size: 0.95rem;
-        }
-        
-        .registration-header-info strong {
-            color: #343a40;
-            margin-right: 8px;
-        }
-
-        .registration-content {
-            max-width: 650px; /* 폼의 최대 너비 설정 */
-            margin: 0 auto; /* 폼을 중앙 정렬 */
-        }
-        
         .checkbox-single-group {
             margin-top: 10px;
         }
@@ -287,6 +254,133 @@
             font-size: 0.8rem;
             color: #6c757d;
             margin-top: 10px;
+        }
+        
+        /* --- Registration Modal Styles --- */
+        .modal-overlay {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none; /* Initially hidden */
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #1e293b; /* Dark background similar to the section */
+            color: #f1f5f9;
+            padding: 30px 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 700px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 20px;
+            }
+        }
+
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #aaa;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close-btn:hover,
+        .modal-close-btn:focus {
+            color: #f3b63a;
+            text-decoration: none;
+        }
+        
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* Adjust form styles for modal */
+        .modal-content .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 0; /* Remove padding inherited from section */
+        }
+        .modal-content .section-header h2 {
+            color: #fff;
+        }
+        .modal-content .section-header p {
+            color: #cbd5e1;
+        }
+        
+        .modal-content .registration-header-info {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+            border-radius: 8px;
+        }
+        
+        .modal-content .registration-header-info p {
+             margin: 0.5rem 0;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+        }
+         .modal-content .registration-header-info strong {
+            color: #e2e8f0;
+             margin-right: 8px;
+        }
+
+        .modal-content .registration-form {
+             max-width: 650px;
+             margin: 0 auto;
+        }
+        
+        .modal-content .form-group label,
+        .modal-content .checkbox-single-group label {
+            color: #cbd5e1;
+        }
+        
+        .modal-content input[type="text"],
+        .modal-content input[type="email"],
+        .modal-content input[type="tel"] {
+            background-color: #334155;
+            border: 1px solid #475569;
+            color: #f1f5f9;
+        }
+        .modal-content input:focus {
+            background-color: #475569;
+        }
+
+        .modal-content .privacy-notice {
+            color: #94a3b8;
         }
         
         /* 모바일 UI 개선을 위한 추가 스타일 */
@@ -826,9 +920,46 @@
         </div>
     </section>
 
-    <!-- Registration Section -->
-    <section id="register" class="registration">
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/6f8a9b0d-b203-404e-9d26-ae3d0f1026c8.png" alt="KI-AIL Forum Logo" class="footer-logo">
+                    <h3>KI-AIL Forum 2025</h3>
+                    <p>대한민국 산업AI 리더십 포럼</p>
+                </div>
+                
+                <div class="footer-info">
+                    <div class="footer-section">
+                        <h4>주최</h4>
+                        <p>대한산업공학회 산업AI 워킹그룹</p>
+                        <p>한국생산성본부</p>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>행사 정보</h4>
+                        <p>2025년 11월 28일 (금)</p>
+                        <p>노보텔 앰배서더 강남</p>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>문의</h4>
+                        <p>kpcsmart01@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 대한민국 산업AI 리더십 포럼. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Registration Modal -->
+    <div id="register-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close-btn">&times;</span>
             <div class="section-header">
                 <h2>참가 신청</h2>
                 <p>대한민국 산업AI의 미래를 함께 만들어갑시다</p>
@@ -838,8 +969,7 @@
                     <p><strong>문의:</strong> kpcsmart01@gmail.com</p>
                 </div>
             </div>
-            
-            <div class="registration-content">
+            <div class="registration-form-container">
                 <!-- Google Apps Script와 연결될 폼 -->
                 <form class="registration-form" id="registrationForm">
                     <div class="form-group">
@@ -887,46 +1017,10 @@
                     <strong>참가 신청이 완료되었습니다.</strong><br>
                     소중한 시간을 내어주셔서 감사합니다.
                 </div>
-                
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/6f8a9b0d-b203-404e-9d26-ae3d0f1026c8.png" alt="KI-AIL Forum Logo" class="footer-logo">
-                    <h3>KI-AIL Forum 2025</h3>
-                    <p>대한민국 산업AI 리더십 포럼</p>
-                </div>
-                
-                <div class="footer-info">
-                    <div class="footer-section">
-                        <h4>주최</h4>
-                        <p>대한산업공학회 산업AI 워킹그룹</p>
-                        <p>한국생산성본부</p>
-                    </div>
-                    
-                    <div class="footer-section">
-                        <h4>행사 정보</h4>
-                        <p>2025년 11월 28일 (금)</p>
-                        <p>노보텔 앰배서더 강남</p>
-                    </div>
-                    
-                    <div class="footer-section">
-                        <h4>문의</h4>
-                        <p>kpcsmart01@gmail.com</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 대한민국 산업AI 리더십 포럼. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
@@ -1046,6 +1140,8 @@
             registrationForm.addEventListener('submit', (e) => {
                 e.preventDefault(); // 폼의 기본 제출 동작을 막습니다.
 
+                const formContainer = registrationForm.parentElement;
+
                 submitButton.disabled = true;
                 submitButton.textContent = '제출 중...';
 
@@ -1076,6 +1172,43 @@
                 });
             });
         }
+        
+        // --- Registration Modal Script ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('register-modal');
+            const openBtns = document.querySelectorAll('a[href="#register"]');
+            const closeBtn = document.querySelector('.modal-close-btn');
+
+            if (!modal || openBtns.length === 0 || !closeBtn) {
+                console.log('Modal elements not found, skipping modal script.');
+                return;
+            }
+
+            const openModal = (e) => {
+                e.preventDefault();
+                modal.style.display = 'flex';
+                document.body.classList.add('modal-open');
+            };
+
+            const closeModal = () => {
+                modal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            };
+
+            openBtns.forEach(btn => {
+                btn.addEventListener('click', openModal);
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+
+            // Close modal when clicking outside of the content
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+        });
+
     </script>
 </body>
 </html>
