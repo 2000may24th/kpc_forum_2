@@ -31,9 +31,16 @@
         /* --- 주요 프로그램 섹션 수정 --- */
         .program-slider-container {
             position: relative;
-            max-width: 420px; /* 카드 너비 + 패딩 */
+            width: 100%;
+            max-width: 420px; /* 모바일/기본 최대 너비 */
             margin: 2rem auto;
             overflow: hidden;
+        }
+
+        @media (min-width: 1024px) {
+            .program-slider-container {
+                max-width: 500px; /* 데스크탑에서 너비 증가 */
+            }
         }
 
         .program-slider-wrapper {
@@ -52,14 +59,14 @@
         .program-card-inner {
             position: relative;
             width: 100%;
-            height: 450px; /* 카드 높이 고정 */
+            height: 480px; /* 카드 높이 조정 */
             transition: transform 0.8s;
             transform-style: preserve-3d;
             cursor: pointer;
         }
 
         .program-card-container:hover .program-card-inner {
-            transform: rotateY(180deg);
+            transform: rotateX(180deg); /* 위아래로 뒤집기 */
         }
 
         .program-card-front,
@@ -71,121 +78,24 @@
             backface-visibility: hidden;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
         }
 
         .program-card-front {
             background-color: #ffffff;
-            /* 기존 program-card 스타일을 여기로 이동 */
-             display: flex;
-            flex-direction: column;
         }
 
         .program-card-back {
             background-color: #313b4c;
             color: white;
-            transform: rotateY(180deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
+            transform: rotateX(180deg); /* 위아래로 뒤집기 */
+            padding: 20px;
             box-sizing: border-box;
-        }
-        
-        .back-content-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            text-align: left;
-        }
-
-        @media (min-width: 768px) {
-            .back-content-wrapper {
-                flex-direction: row;
-                align-items: center;
-            }
-        }
-
-        .back-image {
-            flex: 0 0 120px; /* 이미지 너비 고정 */
-            margin: 0 auto 15px auto;
-        }
-        
-        @media (min-width: 768px) {
-            .back-image {
-                margin: 0;
-            }
-        }
-
-        .back-image img {
-            width: 100%;
-            border-radius: 8px;
-            border: 3px solid #f3b63a;
-        }
-
-        .back-text {
-            flex: 1;
-            padding-left: 0;
-        }
-        
-        @media (min-width: 768px) {
-            .back-text {
-                 padding-left: 25px;
-            }
-        }
-
-        .back-text h4 {
-            font-size: 1.3rem;
-            color: #f3b63a;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .back-text p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #333;
-            border: 1px solid #ddd;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: all 0.2s ease;
         }
         
-        .slider-btn:hover {
-            background-color: #f3b63a;
-            color: white;
-            border-color: #f3b63a;
-        }
-
-        .prev-btn {
-            left: 0;
-        }
-
-        .next-btn {
-            right: 0;
-        }
-        
-        @media (min-width: 500px) {
-            .prev-btn { left: -20px; }
-            .next-btn { right: -20px; }
-        }
-
-        /* 기존 Program Card 스타일 상속 및 수정 */
+        /* 카드 앞면 스타일 */
         .program-card-front .program-header {
             background-color: #313b4c;
             color: #ffffff;
@@ -208,52 +118,121 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             margin: 0;
-        }
-        
-        .program-card-front .program-content {
-            padding: 1.5rem;
-            text-align: left;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            line-height: 1.3;
         }
 
-        .program-card-front .program-topics {
+        .front-image-container {
+            flex-grow: 1;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+
+        .front-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .program-card-container:hover .front-image-container img {
+            transform: scale(1.05);
+        }
+
+        .hover-indicator {
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #777;
+            background-color: #f8f9fa;
+            border-top: 1px solid #eee;
+            border-radius: 0 0 12px 12px;
+        }
+        
+        /* 카드 뒷면 스타일 */
+        .program-card-back .program-content {
+            text-align: left;
+            overflow-y: auto; /* 내용이 길 경우 스크롤 */
+            height: 100%;
+            padding: 1rem;
+        }
+        
+        .program-card-back h4 {
+            font-size: 1.5rem;
+            color: #f3b63a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .program-card-back .program-topics {
             list-style: none;
             padding-left: 0;
             margin-bottom: 1.5rem;
         }
 
-        .program-card-front .program-topics li {
+        .program-card-back .program-topics li {
             padding-left: 1.2em;
             text-indent: -1.2em;
             margin-bottom: 1rem;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            color: #f0f0f0;
         }
 
-        .program-card-front .program-topics li::before {
+        .program-card-back .program-topics li::before {
             content: '•';
             color: #f3b63a;
             margin-right: 0.5em;
             font-size: 1.2em;
         }
 
-        .program-card-front .program-topics .speaker {
+        .program-card-back .program-topics .speaker {
             display: block;
-            font-size: 0.85rem;
-            color: #666;
+            font-size: 0.8rem;
+            color: #ccc;
             margin-top: 4px;
         }
         
-        .program-card-front .program-description {
+        .program-card-back .program-description {
             font-size: 0.9rem;
-            color: #555;
-            margin-top: auto;
-            border-top: 1px solid #eee;
-            padding-top: 1rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* 슬라이더 버튼 */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            border: 1px solid #ddd;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
         }
         
+        .slider-btn:hover {
+            background-color: #f3b63a;
+            color: white;
+            border-color: #f3b63a;
+        }
+
+        .prev-btn { left: -15px; }
+        .next-btn { right: -15px; }
+        
+        @media (min-width: 640px) {
+            .prev-btn { left: -25px; }
+            .next-btn { right: -25px; }
+        }
         
         /* 모바일 UI 개선을 위한 추가 스타일 */
         @media (max-width: 768px) {
@@ -515,26 +494,22 @@
                                     <span class="session-badge">Session 1</span>
                                     <h3>AI for Design and Manufacturing</h3>
                                 </div>
+                                <div class="front-image-container">
+                                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400&auto=format&fit=crop" alt="AI Manufacturing">
+                                </div>
+                                <div class="hover-indicator">상세 정보를 보려면 마우스를 올리세요</div>
+                            </div>
+                            <div class="program-card-back">
                                 <div class="program-content">
+                                    <h4>설계 및 제조 AI</h4>
                                     <ul class="program-topics">
                                         <li>AI 기반 제품 설계 최적화<br><span class="speaker">노상도교수(KAIST대학)</span></li>
                                         <li>산업AI 성숙도 모델 개발<br><span class="speaker">000교수(000대학)</span></li>
                                         <li>생산 현장 디지털 트윈 통합<br><span class="speaker">000교수(000대학)</span></li>
                                     </ul>
                                     <p class="program-description">
-                                        제조업의 미래를 여는 설계 및 자율 제조 혁신 기술을 탐구합니다.
+                                        AI를 활용한 혁신적인 제품 설계 및 제조 공정 최적화 방안을 심도 있게 다룹니다. 디지털 트윈, 생성형 AI 등 최신 기술이 실제 산업 현장에서 어떻게 적용되는지 구체적인 사례와 함께 논의합니다.
                                     </p>
-                                </div>
-                            </div>
-                            <div class="program-card-back">
-                                <div class="back-content-wrapper">
-                                    <div class="back-image">
-                                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400&auto=format&fit=crop" alt="AI Manufacturing">
-                                    </div>
-                                    <div class="back-text">
-                                        <h4>설계 및 제조 AI</h4>
-                                        <p>AI를 활용한 혁신적인 제품 설계 및 제조 공정 최적화 방안을 심도 있게 다룹니다. 디지털 트윈, 생성형 AI 등 최신 기술이 실제 산업 현장에서 어떻게 적용되는지 구체적인 사례와 함께 논의합니다.</p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -548,26 +523,22 @@
                                     <span class="session-badge">Session 2</span>
                                     <h3>Agentic Manufacturing System</h3>
                                 </div>
+                                <div class="front-image-container">
+                                     <img src="https://images.unsplash.com/photo-1620712943543-95fc69614534?q=80&w=400&auto=format&fit=crop" alt="Agentic System">
+                                </div>
+                                <div class="hover-indicator">상세 정보를 보려면 마우스를 올리세요</div>
+                            </div>
+                            <div class="program-card-back">
                                 <div class="program-content">
+                                    <h4>자율 제조 시스템</h4>
                                     <ul class="program-topics">
                                         <li>생산 현장 자율 의사결정 시스템<br><span class="speaker">정재윤교수(경희대학)</span></li>
                                         <li>다중 에이전트 협업 시스템<br><span class="speaker">000교수(000대학)</span></li>
                                         <li>진단평가 모델 프레임워크<br><span class="speaker">000교수(000대학)</span></li>
                                     </ul>
                                     <p class="program-description">
-                                        자율적이고 지능적인 제조 시스템의 구현 방안을 모색합니다.
+                                        다중 에이전트 시스템(MAS)과 강화학습을 통해 생산 현장의 의사결정을 자동화하고, 인간과 AI가 협업하는 미래형 스마트팩토리의 청사진을 제시합니다. 시스템의 자율성과 효율성을 극대화하는 방안을 논의합니다.
                                     </p>
-                                </div>
-                            </div>
-                            <div class="program-card-back">
-                                <div class="back-content-wrapper">
-                                    <div class="back-image">
-                                        <img src="https://images.unsplash.com/photo-1620712943543-95fc69614534?q=80&w=400&auto=format&fit=crop" alt="Agentic System">
-                                    </div>
-                                    <div class="back-text">
-                                        <h4>자율 제조 시스템</h4>
-                                        <p>다중 에이전트 시스템(MAS)과 강화학습을 통해 생산 현장의 의사결정을 자동화하고, 인간과 AI가 협업하는 미래형 스마트팩토리의 청사진을 제시합니다. 시스템의 자율성과 효율성을 극대화하는 방안을 논의합니다.</p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -581,26 +552,22 @@
                                     <span class="session-badge">Session 3</span>
                                     <h3>Supply Chain Operation Intelligence</h3>
                                 </div>
-                                <div class="program-content">
+                                <div class="front-image-container">
+                                    <img src="https://images.unsplash.com/photo-1586528116311-06924211a1d3?q=80&w=400&auto=format&fit=crop" alt="Supply Chain">
+                                </div>
+                               <div class="hover-indicator">상세 정보를 보려면 마우스를 올리세요</div>
+                            </div>
+                            <div class="program-card-back">
+                               <div class="program-content">
+                                   <h4>공급망 운영 지능화</h4>
                                     <ul class="program-topics">
                                         <li>예측적 공급망 분석<br><span class="speaker">000교수(000대학)</span></li>
                                         <li>실시간 물류 최적화<br><span class="speaker">000교수(000대학)</span></li>
                                         <li>글로벌 공급망 가시성<br><span class="speaker">000교수(000대학)</span></li>
                                     </ul>
                                     <p class="program-description">
-                                        지능형 공급망 운영을 위한 혁신적 접근법을 제시합니다.
+                                        데이터 분석과 AI를 기반으로 수요를 예측하고, 재고 및 물류를 실시간으로 최적화하여 공급망 전체의 회복탄력성과 효율성을 높이는 전략을 탐구합니다. 불확실성에 대응하는 지능형 공급망을 구축합니다.
                                     </p>
-                                </div>
-                            </div>
-                            <div class="program-card-back">
-                                <div class="back-content-wrapper">
-                                    <div class="back-image">
-                                        <img src="https://images.unsplash.com/photo-1586528116311-06924211a1d3?q=80&w=400&auto=format&fit=crop" alt="Supply Chain">
-                                    </div>
-                                    <div class="back-text">
-                                        <h4>공급망 운영 지능화</h4>
-                                        <p>데이터 분석과 AI를 기반으로 수요를 예측하고, 재고 및 물류를 실시간으로 최적화하여 공급망 전체의 회복탄력성과 효율성을 높이는 전략을 탐구합니다. 불확실성에 대응하는 지능형 공급망을 구축합니다.</p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -944,8 +911,9 @@
             const totalSlides = cardContainers.length;
 
             function updateSliderPosition() {
-                // 각 카드의 너비만큼 wrapper를 이동시킴
-                const offset = -currentIndex * 100;
+                // 슬라이드 하나의 너비(%)만큼 wrapper를 이동시킴
+                const slideWidth = 100 / totalSlides;
+                const offset = -currentIndex * slideWidth;
                 wrapper.style.transform = `translateX(${offset}%)`;
             }
             
@@ -990,6 +958,8 @@
                     prevBtn.click();
                 }
             }
+            
+            updateSliderPosition(); // 초기 위치 설정
         });
 
         // --- 참가 신청 폼 스크립트 ---
@@ -1037,3 +1007,4 @@
     </script>
 </body>
 </html>
+
