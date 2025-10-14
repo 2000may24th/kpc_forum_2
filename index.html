@@ -282,6 +282,9 @@
             max-width: 700px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
             animation: slideIn 0.5s ease-out;
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh; /* 팝업의 최대 높이 제한 */
         }
         
         @media (max-width: 768px) {
@@ -289,7 +292,6 @@
                 padding: 20px;
             }
         }
-
 
         @keyframes slideIn {
             from {
@@ -323,11 +325,20 @@
             overflow: hidden;
         }
 
+        /* 폼 스크롤 컨테이너 */
+        .registration-form-container {
+            overflow-y: auto; /* 내용이 넘칠 경우 세로 스크롤 생성 */
+            flex-grow: 1; /* 남는 공간을 모두 차지하도록 설정 */
+            padding-right: 15px; /* 스크롤바 공간 확보 */
+            margin-right: -15px; /* 스크롤바 공간만큼 음수 마진 적용 */
+        }
+        
         /* Adjust form styles for modal */
         .modal-content .section-header {
             text-align: center;
             margin-bottom: 2rem;
             padding: 0; /* Remove padding inherited from section */
+            flex-shrink: 0; /* 헤더는 줄어들지 않음 */
         }
         .modal-content .section-header h2 {
             color: #fff;
