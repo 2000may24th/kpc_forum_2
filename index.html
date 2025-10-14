@@ -231,6 +231,63 @@
 
         .prev-btn { left: -22px; }
         .next-btn { right: -22px; }
+
+        /* --- 참가 신청 섹션 수정 --- */
+        .registration .section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .registration-header-info {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .registration-header-info p {
+            margin: 0.5rem 0;
+            color: #495057;
+            font-size: 0.95rem;
+        }
+        
+        .registration-header-info strong {
+            color: #343a40;
+            margin-right: 8px;
+        }
+
+        .registration-content {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        
+        .checkbox-single-group {
+            margin-top: 10px;
+        }
+
+        .checkbox-single-group label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .checkbox-single-group input[type="checkbox"] {
+            margin-right: 8px;
+            width: 16px;
+            height: 16px;
+            accent-color: #f3b63a;
+        }
+
+        .privacy-notice {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 10px;
+        }
         
         /* 모바일 UI 개선을 위한 추가 스타일 */
         @media (max-width: 768px) {
@@ -775,32 +832,14 @@
             <div class="section-header">
                 <h2>참가 신청</h2>
                 <p>대한민국 산업AI의 미래를 함께 만들어갑시다</p>
+                <div class="registration-header-info">
+                    <p><strong>참가비:</strong> 무료 (사전 등록 필수)</p>
+                    <p><strong>등록 마감:</strong> 2025년 11월 05일 (수) 18:00</p>
+                    <p><strong>문의:</strong> kpcsmart01@gmail.com</p>
+                </div>
             </div>
             
             <div class="registration-content">
-                <div class="registration-info">
-                    <div class="registration-highlights">
-                        <div class="highlight-item">
-                            <h4>참가비 무료</h4>
-                            <p>사전 등록 필수</p>
-                        </div>
-                        <div class="highlight-item">
-                            <h4>네트워킹</h4>
-                            <p>업계 리더들과의 교류</p>
-                        </div>
-                        <div class="highlight-item">
-                            <h4>자료 제공</h4>
-                            <p>세션별 발표 자료</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info">
-                        <h4>문의</h4>
-                        <p><strong>이메일:</strong> kpcsmart01@gmail.com</p>
-                        <p><strong>등록 마감:</strong> 2025년 11월 05일 (수) 18:00</p>
-                    </div>
-                </div>
-                
                 <!-- Google Apps Script와 연결될 폼 -->
                 <form class="registration-form" id="registrationForm">
                     <div class="form-group">
@@ -829,13 +868,14 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="interests">관심 세션 (복수 선택 가능)</label>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" name="interests" value="AI for Design and Manufacturing"> AI for Design and Manufacturing</label>
-                            <label><input type="checkbox" name="interests" value="Agentic Manufacturing System"> Agentic Manufacturing System</label>
-                            <label><input type="checkbox" name="interests" value="Supply Chain Operation Intelligence"> Supply Chain Operation Intelligence</label>
-                            <label><input type="checkbox" name="interests" value="Panel Discussion"> Panel Discussion</label>
+                        <label>개인정보 수집 및 활용 동의 *</label>
+                        <div class="checkbox-single-group">
+                            <label for="privacy-agree">
+                                <input type="checkbox" id="privacy-agree" name="privacy" value="agreed" required>
+                                동의합니다
+                            </label>
                         </div>
+                        <p class="privacy-notice">개인정보는 행사 안내 및 운영 목적으로만 사용됩니다.</p>
                     </div>
                     
                     <button type="submit" class="btn-submit">
