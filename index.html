@@ -29,23 +29,34 @@
         }
 
         /* --- 주요 프로그램 섹션 수정 --- */
-        .program-slider-container {
+        .program-slider-area {
             position: relative;
-            width: 100%;
             max-width: 420px; /* 모바일/기본 최대 너비 */
             margin: 2rem auto;
-            overflow: hidden;
+        }
+        
+        @media (min-width: 768px) {
+            .program-slider-area {
+                max-width: 540px; /* 태블릿 너비 */
+            }
         }
 
         @media (min-width: 1024px) {
-            .program-slider-container {
-                max-width: 500px; /* 데스크탑에서 너비 증가 */
+            .program-slider-area {
+                max-width: 600px; /* 데스크탑에서 너비 증가 */
             }
+        }
+
+        .program-slider-container {
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
         }
 
         .program-slider-wrapper {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            /* transition은 JS에서 제어 */
         }
 
         .program-card-container {
@@ -101,6 +112,7 @@
             color: #ffffff;
             padding: 1.5rem;
             border-radius: 12px 12px 0 0;
+            flex-shrink: 0;
         }
 
         .program-card-front .session-badge {
@@ -125,6 +137,7 @@
             flex-grow: 1;
             overflow: hidden;
             background-color: #f0f0f0;
+            border-radius: 0 0 12px 12px;
         }
 
         .front-image-container img {
@@ -136,16 +149,6 @@
         
         .program-card-container:hover .front-image-container img {
             transform: scale(1.05);
-        }
-
-        .hover-indicator {
-            padding: 1rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #777;
-            background-color: #f8f9fa;
-            border-top: 1px solid #eee;
-            border-radius: 0 0 12px 12px;
         }
         
         /* 카드 뒷면 스타일 */
@@ -203,7 +206,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.9);
             color: #333;
             border: 1px solid #ddd;
             width: 45px;
@@ -216,7 +219,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
             transition: all 0.2s ease;
         }
         
@@ -226,13 +229,8 @@
             border-color: #f3b63a;
         }
 
-        .prev-btn { left: -15px; }
-        .next-btn { right: -15px; }
-        
-        @media (min-width: 640px) {
-            .prev-btn { left: -25px; }
-            .next-btn { right: -25px; }
-        }
+        .prev-btn { left: -22px; }
+        .next-btn { right: -22px; }
         
         /* 모바일 UI 개선을 위한 추가 스타일 */
         @media (max-width: 768px) {
@@ -484,90 +482,89 @@
                 <p>산업AI의 현재와 미래를 탐구하는 3개 핵심 세션</p>
             </div>
             
-            <div class="program-slider-container">
-                <div class="program-slider-wrapper">
-                    <!-- Card 1 -->
-                    <div class="program-card-container">
-                        <div class="program-card-inner">
-                            <div class="program-card-front">
-                                <div class="program-header">
-                                    <span class="session-badge">Session 1</span>
-                                    <h3>AI for Design and Manufacturing</h3>
+            <div class="program-slider-area">
+                <div class="program-slider-container">
+                    <div class="program-slider-wrapper">
+                        <!-- Card 1 -->
+                        <div class="program-card-container">
+                            <div class="program-card-inner">
+                                <div class="program-card-front">
+                                    <div class="program-header">
+                                        <span class="session-badge">Session 1</span>
+                                        <h3>AI for Design and Manufacturing</h3>
+                                    </div>
+                                    <div class="front-image-container">
+                                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400&auto=format&fit=crop" alt="AI Manufacturing">
+                                    </div>
                                 </div>
-                                <div class="front-image-container">
-                                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400&auto=format&fit=crop" alt="AI Manufacturing">
-                                </div>
-                                <div class="hover-indicator">상세 정보를 보려면 마우스를 올리세요</div>
-                            </div>
-                            <div class="program-card-back">
-                                <div class="program-content">
-                                    <h4>설계 및 제조 AI</h4>
-                                    <ul class="program-topics">
-                                        <li>AI 기반 제품 설계 최적화<br><span class="speaker">노상도교수(KAIST대학)</span></li>
-                                        <li>산업AI 성숙도 모델 개발<br><span class="speaker">000교수(000대학)</span></li>
-                                        <li>생산 현장 디지털 트윈 통합<br><span class="speaker">000교수(000대학)</span></li>
-                                    </ul>
-                                    <p class="program-description">
-                                        AI를 활용한 혁신적인 제품 설계 및 제조 공정 최적화 방안을 심도 있게 다룹니다. 디지털 트윈, 생성형 AI 등 최신 기술이 실제 산업 현장에서 어떻게 적용되는지 구체적인 사례와 함께 논의합니다.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="program-card-container">
-                        <div class="program-card-inner">
-                            <div class="program-card-front">
-                                <div class="program-header">
-                                    <span class="session-badge">Session 2</span>
-                                    <h3>Agentic Manufacturing System</h3>
-                                </div>
-                                <div class="front-image-container">
-                                     <img src="https://images.unsplash.com/photo-1620712943543-95fc69614534?q=80&w=400&auto=format&fit=crop" alt="Agentic System">
-                                </div>
-                                <div class="hover-indicator">상세 정보를 보려면 마우스를 올리세요</div>
-                            </div>
-                            <div class="program-card-back">
-                                <div class="program-content">
-                                    <h4>자율 제조 시스템</h4>
-                                    <ul class="program-topics">
-                                        <li>생산 현장 자율 의사결정 시스템<br><span class="speaker">정재윤교수(경희대학)</span></li>
-                                        <li>다중 에이전트 협업 시스템<br><span class="speaker">000교수(000대학)</span></li>
-                                        <li>진단평가 모델 프레임워크<br><span class="speaker">000교수(000대학)</span></li>
-                                    </ul>
-                                    <p class="program-description">
-                                        다중 에이전트 시스템(MAS)과 강화학습을 통해 생산 현장의 의사결정을 자동화하고, 인간과 AI가 협업하는 미래형 스마트팩토리의 청사진을 제시합니다. 시스템의 자율성과 효율성을 극대화하는 방안을 논의합니다.
-                                    </p>
+                                <div class="program-card-back">
+                                    <div class="program-content">
+                                        <h4>설계 및 제조 AI</h4>
+                                        <ul class="program-topics">
+                                            <li>AI 기반 제품 설계 최적화<br><span class="speaker">노상도교수(KAIST대학)</span></li>
+                                            <li>산업AI 성숙도 모델 개발<br><span class="speaker">000교수(000대학)</span></li>
+                                            <li>생산 현장 디지털 트윈 통합<br><span class="speaker">000교수(000대학)</span></li>
+                                        </ul>
+                                        <p class="program-description">
+                                            AI를 활용한 혁신적인 제품 설계 및 제조 공정 최적화 방안을 심도 있게 다룹니다. 디지털 트윈, 생성형 AI 등 최신 기술이 실제 산업 현장에서 어떻게 적용되는지 구체적인 사례와 함께 논의합니다.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Card 3 -->
-                    <div class="program-card-container">
-                        <div class="program-card-inner">
-                            <div class="program-card-front">
-                                <div class="program-header">
-                                    <span class="session-badge">Session 3</span>
-                                    <h3>Supply Chain Operation Intelligence</h3>
+                        <!-- Card 2 -->
+                        <div class="program-card-container">
+                            <div class="program-card-inner">
+                                <div class="program-card-front">
+                                    <div class="program-header">
+                                        <span class="session-badge">Session 2</span>
+                                        <h3>Agentic Manufacturing System</h3>
+                                    </div>
+                                    <div class="front-image-container">
+                                         <img src="https://images.unsplash.com/photo-1620712943543-95fc69614534?q=80&w=400&auto=format&fit=crop" alt="Agentic System">
+                                    </div>
                                 </div>
-                                <div class="front-image-container">
-                                    <img src="https://images.unsplash.com/photo-1586528116311-06924211a1d3?q=80&w=400&auto=format&fit=crop" alt="Supply Chain">
+                                <div class="program-card-back">
+                                    <div class="program-content">
+                                        <h4>자율 제조 시스템</h4>
+                                        <ul class="program-topics">
+                                            <li>생산 현장 자율 의사결정 시스템<br><span class="speaker">정재윤교수(경희대학)</span></li>
+                                            <li>다중 에이전트 협업 시스템<br><span class="speaker">000교수(000대학)</span></li>
+                                            <li>진단평가 모델 프레임워크<br><span class="speaker">000교수(000대학)</span></li>
+                                        </ul>
+                                        <p class="program-description">
+                                            다중 에이전트 시스템(MAS)과 강화학습을 통해 생산 현장의 의사결정을 자동화하고, 인간과 AI가 협업하는 미래형 스마트팩토리의 청사진을 제시합니다. 시스템의 자율성과 효율성을 극대화하는 방안을 논의합니다.
+                                        </p>
+                                    </div>
                                 </div>
-                               <div class="hover-indicator">상세 정보를 보려면 마우스를 올리세요</div>
                             </div>
-                            <div class="program-card-back">
-                               <div class="program-content">
-                                   <h4>공급망 운영 지능화</h4>
-                                    <ul class="program-topics">
-                                        <li>예측적 공급망 분석<br><span class="speaker">000교수(000대학)</span></li>
-                                        <li>실시간 물류 최적화<br><span class="speaker">000교수(000대학)</span></li>
-                                        <li>글로벌 공급망 가시성<br><span class="speaker">000교수(000대학)</span></li>
-                                    </ul>
-                                    <p class="program-description">
-                                        데이터 분석과 AI를 기반으로 수요를 예측하고, 재고 및 물류를 실시간으로 최적화하여 공급망 전체의 회복탄력성과 효율성을 높이는 전략을 탐구합니다. 불확실성에 대응하는 지능형 공급망을 구축합니다.
-                                    </p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="program-card-container">
+                            <div class="program-card-inner">
+                                <div class="program-card-front">
+                                    <div class="program-header">
+                                        <span class="session-badge">Session 3</span>
+                                        <h3>Supply Chain Operation Intelligence</h3>
+                                    </div>
+                                    <div class="front-image-container">
+                                        <img src="https://images.unsplash.com/photo-1586528116311-06924211a1d3?q=80&w=400&auto=format&fit=crop" alt="Supply Chain">
+                                    </div>
+                                </div>
+                                <div class="program-card-back">
+                                   <div class="program-content">
+                                       <h4>공급망 운영 지능화</h4>
+                                        <ul class="program-topics">
+                                            <li>예측적 공급망 분석<br><span class="speaker">000교수(000대학)</span></li>
+                                            <li>실시간 물류 최적화<br><span class="speaker">000교수(000대학)</span></li>
+                                            <li>글로벌 공급망 가시성<br><span class="speaker">000교수(000대학)</span></li>
+                                        </ul>
+                                        <p class="program-description">
+                                            데이터 분석과 AI를 기반으로 수요를 예측하고, 재고 및 물류를 실시간으로 최적화하여 공급망 전체의 회복탄력성과 효율성을 높이는 전략을 탐구합니다. 불확실성에 대응하는 지능형 공급망을 구축합니다.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -894,60 +891,96 @@
     <!-- Scripts -->
     <script src="js/main.js"></script>
     <script>
-        // --- 프로그램 슬라이더 스크립트 ---
+        // --- 프로그램 슬라이더 스크립트 (Infinite Loop) ---
         document.addEventListener('DOMContentLoaded', function() {
-            const wrapper = document.querySelector('.program-slider-wrapper');
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-            const cardContainers = document.querySelectorAll('.program-card-container');
+            const sliderArea = document.querySelector('.program-slider-area');
+            if (!sliderArea) return;
+
+            const wrapper = sliderArea.querySelector('.program-slider-wrapper');
+            const prevBtn = sliderArea.querySelector('.prev-btn');
+            const nextBtn = sliderArea.querySelector('.next-btn');
+            let cardContainers = sliderArea.querySelectorAll('.program-card-container');
             
-            // 요소가 없는 경우 오류를 방지하기 위한 확인
             if (!wrapper || !prevBtn || !nextBtn || cardContainers.length === 0) {
                 console.error('Slider elements not found, skipping slider initialization.');
                 return;
             }
 
-            let currentIndex = 0;
+            const originalSlideCount = cardContainers.length;
+            let currentIndex = 1;
+            let isTransitioning = false;
+
+            // 1. Clone first and last slides
+            const firstClone = cardContainers[0].cloneNode(true);
+            const lastClone = cardContainers[originalSlideCount - 1].cloneNode(true);
+
+            // 2. Add clones to the wrapper
+            wrapper.appendChild(firstClone);
+            wrapper.insertBefore(lastClone, cardContainers[0]);
+
+            // Recalculate elements
+            cardContainers = sliderArea.querySelectorAll('.program-card-container');
             const totalSlides = cardContainers.length;
 
-            function updateSliderPosition() {
-                // 슬라이드 하나의 너비(%)만큼 wrapper를 이동시킴
-                const slideWidth = 100 / totalSlides;
-                const offset = -currentIndex * slideWidth;
-                wrapper.style.transform = `translateX(${offset}%)`;
+            // 3. Initial setup
+            function setInitialPosition() {
+                wrapper.style.transition = 'none';
+                const initialOffset = -currentIndex * 100;
+                wrapper.style.transform = `translateX(${initialOffset}%)`;
             }
             
-            // 너비를 동적으로 설정하여 반응형 대응
-            wrapper.style.width = `${totalSlides * 100}%`;
-            cardContainers.forEach(card => {
-                card.style.width = `${100 / totalSlides}%`;
-            });
+            setInitialPosition();
 
+            // 4. Button event listeners
             nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                updateSliderPosition();
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex++;
+                wrapper.style.transition = 'transform 0.5s ease-in-out';
+                const offset = -currentIndex * 100;
+                wrapper.style.transform = `translateX(${offset}%)`;
             });
 
             prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                updateSliderPosition();
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex--;
+                wrapper.style.transition = 'transform 0.5s ease-in-out';
+                const offset = -currentIndex * 100;
+                wrapper.style.transform = `translateX(${offset}%)`;
+            });
+
+            // 5. Transition end handler for looping
+            wrapper.addEventListener('transitionend', () => {
+                if (currentIndex === 0) { // If it's the prepended clone
+                    wrapper.style.transition = 'none';
+                    currentIndex = originalSlideCount;
+                    const offset = -currentIndex * 100;
+                    wrapper.style.transform = `translateX(${offset}%)`;
+                } else if (currentIndex === totalSlides - 1) { // If it's the appended clone
+                    wrapper.style.transition = 'none';
+                    currentIndex = 1;
+                    const offset = -currentIndex * 100;
+                    wrapper.style.transform = `translateX(${offset}%)`;
+                }
+                isTransitioning = false;
             });
 
             // 모바일 터치 스와이프 기능
             let touchstartX = 0;
             let touchendX = 0;
-            const slider = document.querySelector('.program-slider-container');
-
-            slider.addEventListener('touchstart', function(event) {
+            
+            sliderArea.addEventListener('touchstart', function(event) {
                 touchstartX = event.changedTouches[0].screenX;
             }, { passive: true });
 
-            slider.addEventListener('touchend', function(event) {
+            sliderArea.addEventListener('touchend', function(event) {
                 touchendX = event.changedTouches[0].screenX;
                 handleSwipe();
             }, { passive: true }); 
 
             function handleSwipe() {
+                if (isTransitioning) return;
                 // 스와이프 거리가 충분히 길 때만 동작
                 if (Math.abs(touchendX - touchstartX) < 50) return;
                 
@@ -958,9 +991,8 @@
                     prevBtn.click();
                 }
             }
-            
-            updateSliderPosition(); // 초기 위치 설정
         });
+
 
         // --- 참가 신청 폼 스크립트 ---
         const registrationForm = document.getElementById('registrationForm');
