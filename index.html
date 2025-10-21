@@ -48,47 +48,6 @@
         .symbol-modal-text:last-child {
             margin-bottom: 0;
         }
-
-        /* --- 서식 통일을 위한 수정 --- */
-        .catchphrase-section {
-            padding: 80px 15px;
-            text-align: center;
-            background-color: #fff; /* '주요 프로그램', '행사장 안내'와 같은 배경 */
-        }
-        
-        .catchphrase-section p {
-            max-width: 700px;
-            margin: 1.5rem auto;
-            font-size: 1rem;
-            line-height: 1.8;
-            color: #555; /* 밝은 배경에 가독성 좋은 어두운 색상 */
-        }
-        
-        /* 버튼 스타일 통일 */
-        .btn-map,
-        #open-symbol-modal {
-            display: inline-block;
-            background-color: #313b4c;
-            color: #fff !important; /* a 태그의 기본 색상을 덮어쓰기 위함 */
-            padding: 12px 28px;
-            font-size: 1rem;
-            font-weight: 500;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            border: none;
-        }
-
-        #open-symbol-modal {
-             margin-top: 1.5rem;
-        }
-
-        .btn-map:hover,
-        #open-symbol-modal:hover {
-            background-color: #4a5568;
-        }
-
     </style>
 </head>
 <body>
@@ -192,18 +151,21 @@
         </div>
     </section>
 
-    <!-- *** 수정: 캐치프레이즈 섹션 스타일 통일 *** -->
-    <section class="catchphrase-section">
+    <!-- *** 수정: 캐치프레이즈 섹션을 CSS 클래스 적용하여 수정 *** -->
+    <section class="partner">
         <div class="container">
             <div class="section-header">
-                <h2>Shaping the Future of Industrial AI: AI and Industrial Engineering</h2>
+                <h2>Shaping the Future of Industrial AI:</h2>
+                <h2>AI and Industrial Engineering</h2>
             </div>
-            <p>
+            <p style="max-width: 700px; margin: 1.5rem auto; text-align: center; line-height: 1.8;">
                 'IAL Forum Korea 2025'는 대한민국 산업계에 AI가 나아갈 기술적 로드맵과 미래상을 주도적으로 제시하겠다는 리더십 비전을 선언하며, 제조업에서의 산업AI를 확산시킬 수 있는 구심점의 역할을 수행합니다.
                 <br><br>
                 제조 현장의 실질적인 문제를 해결하고, 기업 경영진뿐만 아니라 실무진까지 신뢰 가능한 데이터 기반의 최적 의사결정을 지원하는 실용적인 아젠다를 제시합니다.
             </p>
-            <button id="open-symbol-modal">포럼 심볼 둘러보기</button>
+            <div style="text-align: center; margin-top: 2rem;">
+                 <a href="#" id="open-symbol-modal" class="btn-map">포럼 심볼 둘러보기</a>
+            </div>
         </div>
     </section>
 
@@ -930,4 +892,3 @@
     </script>
 </body>
 </html>
-
