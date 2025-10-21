@@ -17,24 +17,6 @@
 
     <style>
         /* --- 수정을 위해 추가된 스타일 --- */
-        .btn-symbol-info {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            padding: 12px 24px;
-            font-size: 1rem;
-            font-weight: 500;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            margin-top: 1.5rem;
-        }
-        .btn-symbol-info:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-color: #fff;
-        }
         .symbol-modal-content {
             display: flex;
             align-items: center;
@@ -66,23 +48,44 @@
         .symbol-modal-text:last-child {
             margin-bottom: 0;
         }
+
+        /* --- 서식 통일을 위한 수정 --- */
         .catchphrase-section {
-            padding: 0 15px 50px 15px;
+            padding: 80px 15px;
             text-align: center;
-            background-color: #f8f9fa; /* Statistics 섹션과 구분되는 배경색 */
+            background-color: #fff; /* '주요 프로그램', '행사장 안내'와 같은 배경 */
         }
-        .catchphrase-section .section-header h2 {
-            color: #333;
+        
+        .catchphrase-section p {
+            max-width: 700px;
+            margin: 1.5rem auto;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555; /* 밝은 배경에 가독성 좋은 어두운 색상 */
         }
-         .catchphrase-section p {
-            color: #555;
-        }
-        .catchphrase-section .btn-symbol-info {
+        
+        /* 버튼 스타일 통일 */
+        .btn-map,
+        #open-symbol-modal {
+            display: inline-block;
             background-color: #313b4c;
-            color: #fff;
+            color: #fff !important; /* a 태그의 기본 색상을 덮어쓰기 위함 */
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
             border: none;
         }
-        .catchphrase-section .btn-symbol-info:hover {
+
+        #open-symbol-modal {
+             margin-top: 1.5rem;
+        }
+
+        .btn-map:hover,
+        #open-symbol-modal:hover {
             background-color: #4a5568;
         }
 
@@ -189,18 +192,18 @@
         </div>
     </section>
 
-    <!-- *** 수정: 캐치프레이즈 섹션을 Statistics 섹션 위로 이동 *** -->
+    <!-- *** 수정: 캐치프레이즈 섹션 스타일 통일 *** -->
     <section class="catchphrase-section">
         <div class="container">
-            <div class="section-header" style="margin-bottom: 1rem;">
-                <h2 style="font-family: 'Inter', sans-serif; font-size: 1.75rem; font-weight: 500;">Shaping the Future of Industrial AI: AI and Industrial Engineering</h2>
+            <div class="section-header">
+                <h2>Shaping the Future of Industrial AI: AI and Industrial Engineering</h2>
             </div>
-            <p style="max-width: 700px; margin: 0 auto 1.5rem auto; font-size: 1rem; line-height: 1.8;">
+            <p>
                 'IAL Forum Korea 2025'는 대한민국 산업계에 AI가 나아갈 기술적 로드맵과 미래상을 주도적으로 제시하겠다는 리더십 비전을 선언하며, 제조업에서의 산업AI를 확산시킬 수 있는 구심점의 역할을 수행합니다.
                 <br><br>
                 제조 현장의 실질적인 문제를 해결하고, 기업 경영진뿐만 아니라 실무진까지 신뢰 가능한 데이터 기반의 최적 의사결정을 지원하는 실용적인 아젠다를 제시합니다.
             </p>
-            <button id="open-symbol-modal" class="btn-symbol-info">포럼 심볼 둘러보기</button>
+            <button id="open-symbol-modal">포럼 심볼 둘러보기</button>
         </div>
     </section>
 
@@ -687,7 +690,7 @@
         </div>
     </div>
 
-    <!-- *** 수정: 심볼 소개 팝업(Modal) 추가 및 스타일 변경 *** -->
+    <!-- 심볼 소개 팝업(Modal) -->
     <div id="symbol-modal" class="modal-overlay">
         <div class="modal-content symbol-modal-content">
             <span class="modal-close-btn">&times;</span>
@@ -927,3 +930,4 @@
     </script>
 </body>
 </html>
+
