@@ -15,6 +15,43 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/force-visible.css">
 
+    <style>
+        /* --- 수정을 위해 추가된 스타일 --- */
+        .btn-symbol-info {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        .btn-symbol-info:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: #fff;
+        }
+        .symbol-modal-content {
+            text-align: center;
+            padding: 40px 30px !important;
+        }
+        .symbol-modal-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 24px;
+        }
+        .symbol-modal-text {
+            font-size: 1rem;
+            color: #4a4a4a;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .symbol-modal-text:last-child {
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -74,10 +111,21 @@
                         <span class="title-main">대한민국 산업AI 리더십 포럼</span>
                     </h1>
                     <div class="title-line-en" style="opacity: 1; visibility: visible;"> Industrial AI Leadership Forum Korea 2025 </div>
-                    <div class="subtitle" style="opacity: 1; visibility: visible;">
-                        <span class="tagline">Shaping the Future of Industrial AI: AI and Industrial Engineering</span>
-                    </div>
+                    <!-- *** 수정: 캐치프레이즈 문구를 아래로 이동시켰습니다. *** -->
                 </div>
+            </div>
+
+            <!-- *** 수정: 캐치프레이즈 및 설명 섹션 추가 *** -->
+            <div class="hero-catchphrase" style="opacity: 1; visibility: visible; margin-top: 1.5rem; margin-bottom: 2rem; text-align: center;">
+                <div class="section-header" style="margin-bottom: 1rem;">
+                    <h2 style="font-family: 'Inter', sans-serif; font-size: 1.75rem; font-weight: 500; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.2);">Shaping the Future of Industrial AI: AI and Industrial Engineering</h2>
+                </div>
+                <p style="max-width: 650px; margin: 0 auto 1.5rem auto; font-size: 0.95rem; line-height: 1.7; color: rgba(255, 255, 255, 0.85); font-weight: 400;">
+                    'IAL Forum Korea 2025'는 대한민국 산업계에 AI가 나아갈 기술적 로드맵과 미래상을 주도적으로 제시하겠다는 리더십 비전을 선언하며, 제조업에서의 산업AI를 확산시킬 수 있는 구심점의 역할을 수행합니다.
+                    <br><br>
+                    제조 현장의 실질적인 문제를 해결하고, 기업 경영진뿐만 아니라 실무진까지 신뢰 가능한 데이터 기반의 최적 의사결정을 지원하는 실용적인 아젠다를 제시합니다.
+                </p>
+                <button id="open-symbol-modal" class="btn-symbol-info">포럼 심볼 둘러보기</button>
             </div>
 
             <!-- Event Info -->
@@ -603,6 +651,20 @@
         </div>
     </div>
 
+    <!-- *** 수정: 심볼 소개 팝업(Modal) 추가 *** -->
+    <div id="symbol-modal" class="modal-overlay">
+        <div class="modal-content symbol-modal-content">
+            <span class="modal-close-btn">&times;</span>
+            <img src="images/forum_logo.png" alt="포럼 로고" class="symbol-modal-logo">
+            <p class="symbol-modal-text">
+                산업AI가 대한민국의 제조 혁신을 이끄는 핵심 동력임을 상징하는<br>두 개의 빛나는 별을 형상화했습니다.
+            </p>
+            <p class="symbol-modal-text">
+                상징색인 네이비와 골드는 각각 AI 기술을 통한<br>지속 가능한 성장과 혁신을 상징합니다.
+            </p>
+        </div>
+    </div>
+
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
@@ -759,10 +821,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('register-modal');
             const openBtns = document.querySelectorAll('a[href="#register"]');
-            const closeBtn = document.querySelector('.modal-close-btn');
+            const closeBtn = modal ? modal.querySelector('.modal-close-btn') : null;
 
             if (!modal || openBtns.length === 0 || !closeBtn) {
-                console.log('Modal elements not found, skipping modal script.');
+                console.log('Registration modal elements not found, skipping modal script.');
                 return;
             }
 
@@ -791,15 +853,39 @@
             });
         });
 
+        // --- Symbol Modal Script ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const symbolModal = document.getElementById('symbol-modal');
+            const openSymbolBtn = document.getElementById('open-symbol-modal');
+            const closeSymbolBtn = symbolModal ? symbolModal.querySelector('.modal-close-btn') : null;
+
+            if (!symbolModal || !openSymbolBtn || !closeSymbolBtn) {
+                console.log('Symbol modal elements not found, skipping symbol modal script.');
+                return;
+            }
+
+            const openSymbolModal = (e) => {
+                e.preventDefault();
+                symbolModal.style.display = 'flex';
+                document.body.classList.add('modal-open');
+            };
+
+            const closeSymbolModal = () => {
+                symbolModal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            };
+
+            openSymbolBtn.addEventListener('click', openSymbolModal);
+            closeSymbolBtn.addEventListener('click', closeSymbolModal);
+
+            // Close modal when clicking outside of the content
+            symbolModal.addEventListener('click', function(event) {
+                if (event.target === symbolModal) {
+                    closeSymbolModal();
+                }
+            });
+        });
+
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
